@@ -135,6 +135,7 @@ def sorted_boxes(dt_boxes):
 
 
 def main(args):
+    print(args)
     image_file_list = get_image_file_list(args.image_dir)
     image_file_list = image_file_list[args.process_id::args.total_process_num]
     text_sys = TextSystem(args)
@@ -236,12 +237,13 @@ def main(args):
     if args.benchmark:
         text_sys.text_detector.autolog.report()
         text_sys.text_recognizer.autolog.report()
-
+    
     with open(
             os.path.join(draw_img_save_dir, "system_results.txt"),
             'w',
             encoding='utf-8') as f:
         f.writelines(save_results)
+    
 
 
 if __name__ == "__main__":
